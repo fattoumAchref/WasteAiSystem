@@ -1,0 +1,15 @@
+# Python environments
+venv/
+env/
+env*/
+ragenv/
+__pycache__/
+faiss_index/
+# FAISS and model/index files
+*.faiss
+*.index
+*.npz
+*.hnsw
+*.pkl
+
+

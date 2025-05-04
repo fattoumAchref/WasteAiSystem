@@ -1,0 +1,19 @@
+streamlit
+langchain
+langchain-community
+langchain-ollama
+pdfplumber
+numpy
+torch
+transformers
+faiss-cpu
+sentence-transformers
+pypdf
+langchain-agents>=0.1.0  # For agent workflows
+requests>=2.31.0          # For API tools
+wikipedia 
+google-api-python-client
+tenacity
+fastapi
+uvicorn
+python-consul

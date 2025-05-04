@@ -1,0 +1,17 @@
+👤 User: How are HDPE plastics (milk jugs) recycled differently from PVC?
+
+🤖 Assistant:  In HDPE recycling, containers are chipped to small flakes by a granulator designed to cut chips without causing excessive heat that might fuse the particles. In contrast, PET is a form of polyester that is extremely tough and versatile. Soft drink and water bottles are made from this resin as are many plastic jars and “clamshell” packages (e.g., salad containers). Recycling PET is similar to that for HDPE, but with some differences. Bottles may be color-sorted and are then ground and washed. Unlike polyethylene, however, PET sinks in the wash water while the plastic caps and labels float off. The clean chips are dried and pelletized.
+
+One of the main differences between HDPE and PET recycling is the method used to separate the materials. In HDPE recycling, containers are baled and then separated by size and color on a conveyor belt. After breaking bales, containers are deposited along a conveyor belt for final sorting. Undesired plastics and extraneous wastes are removed manually. Plastics are also sorted by color.
+
+In PET recycling, bottles may be color-sorted and are then ground and washed. Unlike polyethylene, however, PET sinks in the wash water while the plastic caps and labels float off. The clean chips are dried and pelletized. Another difference is that HDPE plastics (milk jugs) are typically used for packaging liquids, while PVC (polyvinyl chloride) is used for a variety of applications such as window frames, siding, flooring, and pipe. The recycling process for PVC is different from that for HDPE and involves different equipment and methods to separate and process the material. 
+
+📚 Sources:
+
+  - C:/Users/fatto/Desktop/RAGWaste/data\John Pichtel - Waste management practices_ municipal, hazardous, and industrial-Taylor & Francis (2005).pdf
+
+  - C:/Users/fatto/Desktop/RAGWaste/data\John Pichtel - Waste management practices_ municipal, hazardous, and industrial-Taylor & Francis (2005).pdf
+
+  - C:/Users/fatto/Desktop/RAGWaste/data\John Pichtel - Waste management practices_ municipal, hazardous, and industrial-Taylor & Francis (2005).pdf
+
+  - C:/Users/fatto/Desktop/RAGWaste/data\John Pichtel - Waste management practices_ municipal, hazardous, and industrial-Taylor & Francis (2005).pdf

@@ -1,0 +1,6 @@
+fastapi
+python-consul
+tensorflow
+keras
+uvicorn
+python-multipart

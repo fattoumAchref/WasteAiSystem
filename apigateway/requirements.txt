@@ -1,0 +1,14 @@
+# Core web frameworks
+fastapi
+uvicorn
+
+# HTTP request client
+requests
+
+# Data validation
+pydantic
+
+# Consul client
+python-consul
+httpx
+python-multipart
