@@ -6,10 +6,18 @@ import requests
 import consul
 import httpx
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 c = consul.Consul(host="localhost", port=8500)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or restrict to your frontend origin
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class ChatRequest(BaseModel):
     prompt: str
 
