@@ -17,7 +17,7 @@ class MockLLM:
 app = FastAPI()
 service_name = "ragwaste-service"
 service_id = f"{service_name}-{socket.gethostname()}"
-service_port = 8001
+service_port = 8004
 planner = TaskPlanner(llm=MockLLM())  # Inject your LLM or chain here
 c = consul.Consul(host="localhost", port=8500)
 

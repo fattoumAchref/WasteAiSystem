@@ -57,21 +57,73 @@ def forward_chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/proxy/classify")
-async def proxy_classify(request: Request):
+class ImageRequest(BaseModel):
+    pred_class: str
+
+@app.post("/gen-image")
+async def proxy_generate_image(request: ImageRequest):
     try:
+        host, port = discover_service("recycled-image-service")
+
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            response = await client.post(
+                f"http://{host}:{port}/generate-image",
+                json=request.dict()
+            )
+            response.raise_for_status()
+            return response.json()
+
+    except httpx.ConnectError:
+        raise HTTPException(status_code=503, detail="Image generation service unavailable")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+#@app.post("/proxy/classify")
+#async def proxy_classify(request: Request):
+#    try:
         # Forward the multipart request to the classification service
-        form = await request.form()
-        files = {'file': (form['file'].filename, await form['file'].read(), form['file'].content_type)}
+#        form = await request.form()
+#        files = {'file': (form['file'].filename, await form['file'].read(), form['file'].content_type)}
+
+#        async with httpx.AsyncClient() as client:
+#            response = await client.post("http://localhost:8002/classify", files=files)
+#            return JSONResponse(content=response.json(), status_code=response.status_code)
+
+#    except Exception as e:
+#        return JSONResponse(
+#            status_code=500,
+#            content={"detail": "Error proxying request", "error": str(e)}
+#        )
+@app.post("/upload-and-generate")
+async def upload_and_generate(file: UploadFile = File(...)):
+    try:
+        # Step 1: Send image to waste classification service
+        files = {'file': (file.filename, await file.read(), file.content_type)}
 
         async with httpx.AsyncClient() as client:
-            response = await client.post("http://localhost:8002/classify", files=files)
-            return JSONResponse(content=response.json(), status_code=response.status_code)
+            classify_response = await client.post("http://localhost:8002/classify", files=files)
+
+        if classify_response.status_code != 200:
+            return JSONResponse(status_code=classify_response.status_code, content={"detail": "Classification failed"})
+
+        predicted_class = classify_response.json().get("class")
+
+        # Step 2: Send predicted class to stable diffusion service
+        json_payload = {"pred_class": predicted_class}
+
+        async with httpx.AsyncClient() as client:
+            image_response = await client.post("http://localhost:8003/generate-image", json=json_payload)
+
+        if image_response.status_code != 200:
+            return JSONResponse(status_code=image_response.status_code, content={"detail": "Image generation failed"})
+
+        return image_response
 
     except Exception as e:
         return JSONResponse(
             status_code=500,
-            content={"detail": "Error proxying request", "error": str(e)}
+            content={"detail": "Error processing request", "error": str(e)}
         )
     
 @app.post("/predict")
