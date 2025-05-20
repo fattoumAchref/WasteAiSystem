@@ -1,0 +1,16 @@
+# Python environments
+venv/
+env/
+env*/
+ragenv/
+__pycache__/
+faiss_index/
+chat_exports/
+# FAISS and model/index files
+*.faiss
+*.index
+*.npz
+*.hnsw
+*.pkl
+
+

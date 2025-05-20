@@ -164,8 +164,6 @@ async def detect_waste(file: UploadFile = File(...)):
         summary = process_image(temp_path)
         logger.info("🔴 Fin de Traitement de l'image...")
 
-        import pdb; pdb.set_trace()
-
         # Generate report
         logger.info("🔵 Generation du report avec phi2...")
         report = generate_report_with_phi2(summary["objects"], phi2_pipeline=llm)

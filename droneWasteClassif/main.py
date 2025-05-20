@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI, File, UploadFile
 from ultralytics import YOLO
 from PIL import Image
